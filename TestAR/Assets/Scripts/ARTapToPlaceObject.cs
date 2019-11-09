@@ -8,6 +8,7 @@ using TMPro;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
+    [SerializeField] GameObject prefabToPlace;
     [SerializeField] GameObject placementIndicator;
     [SerializeField] TextMeshProUGUI proUGUI;
 
@@ -27,6 +28,16 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+
+        if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            PlaceObject();
+        }
+    }
+
+    private void PlaceObject()
+    {
+        Instantiate(prefabToPlace, placementPose.position, placementPose.rotation);
     }
 
     private void UpdatePlacementIndicator()
@@ -56,6 +67,10 @@ public class ARTapToPlaceObject : MonoBehaviour
             {
                 Debug.Log("Found Plane!");
                 placementPose = hits[0].pose;
+
+                var cameraForward = Camera.current.transform.forward;
+                var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
+                placementPose.rotation = Quaternion.LookRotation(cameraBearing);
             } else
             {
                 Debug.Log("No Plane!");

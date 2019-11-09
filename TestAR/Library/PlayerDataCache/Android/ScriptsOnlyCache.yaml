@@ -55,6 +55,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -64,41 +66,41 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9684}
+      Script: {instanceID: 9708}
     - Class: 114
-      Script: {instanceID: 9920}
+      Script: {instanceID: 9950}
     - Class: 114
-      Script: {instanceID: 10060}
+      Script: {instanceID: 10092}
     - Class: 114
-      Script: {instanceID: 10228}
+      Script: {instanceID: 10266}
     - Class: 114
-      Script: {instanceID: 10304}
+      Script: {instanceID: 10344}
     - Class: 114
-      Script: {instanceID: 10330}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 10922}
+      Script: {instanceID: 10980}
     - Class: 114
-      Script: {instanceID: 10932}
+      Script: {instanceID: 10990}
     - Class: 114
-      Script: {instanceID: 10948}
+      Script: {instanceID: 11006}
     - Class: 114
-      Script: {instanceID: 11080}
+      Script: {instanceID: 11144}
     - Class: 114
-      Script: {instanceID: 11122}
+      Script: {instanceID: 11186}
     - Class: 114
-      Script: {instanceID: 11184}
+      Script: {instanceID: 11248}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11354}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11436}
     - Class: 114
-      Script: {instanceID: 11496}
+      Script: {instanceID: 11570}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11586}
     - Class: 114
-      Script: {instanceID: 11580}
+      Script: {instanceID: 11656}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -560,7 +562,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 887828fbc159bf177bc96be0832b9851
+      Hash: 6dca4b2195d720cd6cc33928a1887563
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ARTapToPlaceObject
