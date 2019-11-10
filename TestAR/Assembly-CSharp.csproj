@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\GameplayStates\IGameplayState.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\SelectBattleZones.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\TankPlacement.cs" />
+    <Compile Include="Assets\Scripts\PathCreator.cs" />
     <Compile Include="Assets\Scripts\Tank\RingRotation.cs" />
     <Compile Include="Assets\Scripts\Tank\TankSelect.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />

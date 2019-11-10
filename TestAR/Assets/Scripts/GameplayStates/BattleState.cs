@@ -7,6 +7,7 @@ using RoboRyanTron.Unite2017.Events;
 
 public class BattleState : GameplayState
 {
+    //[SerializeField] LayerMask raycastMask;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -24,6 +25,12 @@ public class BattleState : GameplayState
 
     bool tankIsSelected = false;
     TankSelect selectedTank = null;
+    TankSelect tankTouched = null;
+    bool isDrawingLine = false;
+
+    private LineRenderer lineRenderer;
+    private List<Vector3> points = new List<Vector3>();
+    float minDistanceBetweenPoints = 0.3f;
 
     public override void StartState()
     {
@@ -36,6 +43,11 @@ public class BattleState : GameplayState
         SetPlayer();
     }
 
+    private void Start()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
+    }
     void SetPlayer()
     {
         DisableAllTanks();
@@ -82,43 +94,108 @@ public class BattleState : GameplayState
 
     public override void RunState()
     {
-        if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
+
+        string uiManagerText = "";
+
+        uiManagerText += "isDrawingLine: " + isDrawingLine + "\n";
+        uiManagerText += "tankIsSelected: " + tankIsSelected + "\n";
+
+        if (isDrawingLine && Input.touchCount <= 0)
+        {
+            isDrawingLine = false;
+        }
+        if ((Input.touchCount > 0))
         {
             Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit raycastHit;
-            if (Physics.Raycast(raycast, out raycastHit))
+
+            if (isDrawingLine && tankIsSelected)
             {
-                //UIManager.Instance.proUGUI.text += "Raycast hit: " + raycastHit.collider.gameObject.name;
-                //UIManager.Instance.proUGUI.text += "tankselect is active and enabled: " + raycastHit.collider.gameObject.GetComponent<TankSelect>().isActiveAndEnabled;
-                //Debug.Log("LogCat Something Hit " + raycastHit.collider.gameObject.name);
-
-                if (tankIsSelected)
+                
+                if (Physics.Raycast(raycast, out raycastHit))
                 {
-                    if (raycastHit.collider.gameObject.GetComponent<TankSelect>() && raycastHit.collider.gameObject.GetComponent<TankSelect>().isActiveAndEnabled)
+                    uiManagerText += "Physics raycast hit \n";
+                    if (DistanceToLastPoint(raycastHit.point) > minDistanceBetweenPoints)
                     {
-                        TankSelect tankTouched = raycastHit.collider.gameObject.GetComponent<TankSelect>();
-
-                        if(tankTouched == selectedTank)
+                        points.Add(raycastHit.point);
+                        lineRenderer.positionCount = points.Count;
+                        lineRenderer.SetPositions(points.ToArray());
+                    }
+                } else
+                {
+                    uiManagerText += "Physics raycast MISSED \n";
+                    OnNewPathCreated(points);
+                    lineRenderer.enabled = false;
+                    isDrawingLine = false;
+                }
+                
+            } else if (tankIsSelected)
+            {
+                    
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    if (Physics.Raycast(raycast, out raycastHit))
+                    {
+                        if (raycastHit.collider.gameObject.GetComponent<TankSelect>() && raycastHit.collider.gameObject.GetComponent<TankSelect>().isActiveAndEnabled)
                         {
+                            tankTouched = raycastHit.collider.gameObject.GetComponent<TankSelect>();
 
-                        } else
+                            if (tankTouched == selectedTank)
+                            {
+                                lineRenderer.enabled = true;
+                                points.Clear();
+                                lineRenderer.positionCount = points.Count;
+                                lineRenderer.SetPositions(points.ToArray());
+                                points.Add(raycastHit.point);
+                                isDrawingLine = true;
+                            }
+                            else
+                            {
+                                UnselectAllTanks();
+                                SelectTank(raycastHit.collider.gameObject.GetComponent<TankSelect>());
+                            }
+                        }
+                        else
                         {
+                            UnselectAllTanks();
+                            tankIsSelected = false;
+                        }
+                    }
+                }
+
+                   
+            }
+            else
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
+                {
+                    if (Physics.Raycast(raycast, out raycastHit))
+                    {
+                        if (raycastHit.collider.gameObject.GetComponent<TankSelect>() && raycastHit.collider.gameObject.GetComponent<TankSelect>().isActiveAndEnabled)
+                        {
+                            Debug.Log("LogCat Something Hit " + raycastHit.collider.gameObject.name);
                             UnselectAllTanks();
                             SelectTank(raycastHit.collider.gameObject.GetComponent<TankSelect>());
                         }
                     }
-                } else {
-                    if (raycastHit.collider.gameObject.GetComponent<TankSelect>() && raycastHit.collider.gameObject.GetComponent<TankSelect>().isActiveAndEnabled)
-                    {
-                        Debug.Log("LogCat Something Hit " + raycastHit.collider.gameObject.name);
-                        UnselectAllTanks();
-                        SelectTank(raycastHit.collider.gameObject.GetComponent<TankSelect>());
-                    }
-                } 
-            {
-                UIManager.Instance.proUGUI.text += "Nothing hit";
+                }
             }
+            
         }
+
+        UIManager.Instance.proUGUI.text = uiManagerText;
+    }
+
+    void OnNewPathCreated(List<Vector3> points)
+    {
+    }
+    float DistanceToLastPoint(Vector3 point)
+    {
+        if (points.Count <= 0)
+        {
+            return Mathf.Infinity;
+        }
+        return Vector3.Distance(points[points.Count - 1], point);
     }
 
     void UnselectAllTanks()
