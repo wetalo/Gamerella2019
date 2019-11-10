@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameplayState : MonoBehaviour, IGameplayState
 {
+    [HideInInspector]
     public GameManager gameManager;
     public virtual void EndState()
     {

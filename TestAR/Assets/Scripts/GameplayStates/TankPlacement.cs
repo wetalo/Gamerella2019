@@ -13,6 +13,7 @@ public class TankPlacement : GameplayState
 
     [SerializeField] GameObject redTankPrefab;
     [SerializeField] GameObject blueTankPrefab;
+    [SerializeField] GameEvent startFightEvent;
     int currentNumTanks = 0;
 
 
@@ -78,11 +79,13 @@ public class TankPlacement : GameplayState
         if (currentPlayerTurn == PlayerTurn.Red)
         {
             GameObject tank = Instantiate(redTankPrefab, placementPose.position, placementPose.rotation);
+            gameManager.redTanks.Add(tank);
             currentNumTanks++;
 
         } else if(currentPlayerTurn == PlayerTurn.Blue)
         {
             GameObject tank = Instantiate(blueTankPrefab, placementPose.position, placementPose.rotation);
+            gameManager.blueTanks.Add(tank);
             currentNumTanks++;
         }
         if(currentNumTanks >= maxNumTanks)
@@ -152,5 +155,8 @@ public class TankPlacement : GameplayState
     {
         UIManager.Instance.proUGUI.color = Color.white;
         UIManager.Instance.proUGUI.text = "";
+        placementIndicator.SetActive(false);
+
+        startFightEvent.Raise();
     }
 }

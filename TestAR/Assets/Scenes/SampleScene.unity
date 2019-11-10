@@ -770,6 +770,7 @@ GameObject:
   - component: {fileID: 1291695378}
   - component: {fileID: 1291695380}
   - component: {fileID: 1291695381}
+  - component: {fileID: 1291695382}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -791,8 +792,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectBattleZonesState: {fileID: 1291695380}
   tankPlacementState: {fileID: 1291695381}
+  battleState: {fileID: 1291695382}
   redPlane: {fileID: 0}
   bluePlane: {fileID: 0}
+  redTanks: []
+  blueTanks: []
 --- !u!4 &1291695379
 Transform:
   m_ObjectHideFlags: 0
@@ -846,6 +850,20 @@ MonoBehaviour:
     type: 3}
   blueTankPrefab: {fileID: 793862112149365407, guid: 00c286a5271003d4290e06f5e413616f,
     type: 3}
+  startFightEvent: {fileID: 11400000, guid: 8fd1807cebf8a2e42b756bf08caa8647, type: 2}
+--- !u!114 &1291695382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291695377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d2902113e2ea0449e75ff69051be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &1590773025
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1726949508}
   - component: {fileID: 1726949507}
+  - component: {fileID: 1726949509}
   m_Layer: 0
   m_Name: EventListeners
   m_TagString: Untagged
@@ -950,6 +969,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726949509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726949506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8fd1807cebf8a2e42b756bf08caa8647, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1291695378}
+        m_MethodName: StartBattleState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1798793214
 GameObject:
   m_ObjectHideFlags: 0

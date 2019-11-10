@@ -10,17 +10,25 @@ public class GameManager : MonoBehaviour
     [Header("GameStates")]
     [SerializeField]GameplayState selectBattleZonesState;
     [SerializeField] GameplayState tankPlacementState;
+    [SerializeField] GameplayState battleState;
 
     GameplayState currentState;
 
     public ARPlane redPlane;
     public ARPlane bluePlane;
 
+    public List<GameObject> redTanks;
+    public List<GameObject> blueTanks;
+
     // Start is called before the first frame update
     void Awake()
     {
         selectBattleZonesState.gameManager = this;
         tankPlacementState.gameManager = this;
+        battleState.gameManager = this;
+
+        redTanks = new List<GameObject>();
+        blueTanks = new List<GameObject>();
 
         StartSelectBattleZonesState();
 
@@ -55,6 +63,11 @@ public class GameManager : MonoBehaviour
     public void StartTankPlacementState()
     {
         StartNewState(tankPlacementState);
+    }
+    public void StartBattleState()
+    {
+        Debug.Log("LogCat GameManager.StartBattleState");
+        StartNewState(battleState);
     }
 
     #endregion

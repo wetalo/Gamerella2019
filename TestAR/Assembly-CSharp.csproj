@@ -87,11 +87,14 @@
     <Compile Include="Assets\EventCode\Variables\UnityEventRaiser.cs" />
     <Compile Include="Assets\EventCode\Variables\VariableAudioTrigger.cs" />
     <Compile Include="Assets\Scripts\ARTapToPlaceObject.cs" />
+    <Compile Include="Assets\Scripts\GameplayStates\BattleState.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\GameplayState.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\IGameplayState.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\SelectBattleZones.cs" />
     <Compile Include="Assets\Scripts\GameplayStates\TankPlacement.cs" />
+    <Compile Include="Assets\Scripts\Tank\RingRotation.cs" />
+    <Compile Include="Assets\Scripts\Tank\TankSelect.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
