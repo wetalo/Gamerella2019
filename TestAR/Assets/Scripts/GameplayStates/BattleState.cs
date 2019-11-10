@@ -95,10 +95,11 @@ public class BattleState : GameplayState
     public override void RunState()
     {
 
-        string uiManagerText = "";
+        if (selectedTank != null)
+        {
 
-        uiManagerText += "isDrawingLine: " + isDrawingLine + "\n";
-        uiManagerText += "tankIsSelected: " + tankIsSelected + "\n";
+            UIManager.Instance.proUGUI.text = selectedTank.GetUIText();
+        }
 
         if (isDrawingLine && Input.touchCount <= 0)
         {
@@ -114,7 +115,6 @@ public class BattleState : GameplayState
                 
                 if (Physics.Raycast(raycast, out raycastHit))
                 {
-                    uiManagerText += "Physics raycast hit \n";
                     if (DistanceToLastPoint(raycastHit.point) > minDistanceBetweenPoints)
                     {
                         points.Add(raycastHit.point);
@@ -123,7 +123,6 @@ public class BattleState : GameplayState
                     }
                 } else
                 {
-                    uiManagerText += "Physics raycast MISSED \n";
                     OnNewPathCreated(points);
                     lineRenderer.enabled = false;
                     isDrawingLine = false;
@@ -183,11 +182,12 @@ public class BattleState : GameplayState
             
         }
 
-        UIManager.Instance.proUGUI.text = uiManagerText;
+       // UIManager.Instance.proUGUI.text = uiManagerText;
     }
 
     void OnNewPathCreated(List<Vector3> points)
     {
+        selectedTank.SetPath(points);
     }
     float DistanceToLastPoint(Vector3 point)
     {
@@ -221,7 +221,6 @@ public class BattleState : GameplayState
 
     void SelectTank(TankSelect tankSelect)
     {
-        UIManager.Instance.proUGUI.text = "Tank selected: " + tankSelect.gameObject;
         tankSelect.Select();
 
         selectedTank = tankSelect;
