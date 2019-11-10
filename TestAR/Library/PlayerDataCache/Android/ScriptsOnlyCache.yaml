@@ -2,6 +2,12 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - ARTapToPlaceObject
+    - GameManager
+    - RoboRyanTron.Unite2017.Events.GameEvent
+    - RoboRyanTron.Unite2017.Events.GameEventListener
+    - SelectBattleZones
+    - TankPlacement
+    - UIManager
     Unity.Mobile.AndroidLogcat.Editor.dll:
     - Unity.Android.Logcat.AndroidLogcatConsoleWindow
     - Unity.Android.Logcat.AndroidLogcatManager
@@ -101,6 +107,18 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11586}
     - Class: 114
       Script: {instanceID: 11656}
+    - Class: 114
+      Script: {instanceID: 14332}
+    - Class: 114
+      Script: {instanceID: 14340}
+    - Class: 114
+      Script: {instanceID: 14346}
+    - Class: 114
+      Script: {instanceID: 16494}
+    - Class: 114
+      Script: {instanceID: 16530}
+    - Class: 114
+      Script: {instanceID: 17064}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -562,7 +580,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 6dca4b2195d720cd6cc33928a1887563
+      Hash: 00fdbb8521aadc426ceadd743196945a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ARTapToPlaceObject
@@ -632,6 +650,168 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: e84fca4a88c00730602e6cb8a5491585
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SelectBattleZones
+  - hash:
+      serializedVersion: 2
+      Hash: 747e08305a05ac4609f649e22ad80809
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 147d471bc01a4537f8d7dae7cbcd7278
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 62e040979f1bcc5cfdb183bf34b809bf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameplayState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Events
+    className: GameEvent
+  - hash:
+      serializedVersion: 2
+      Hash: 16ad865e7082a9b24db1c5b5b49b7d5b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Sets
+    className: ThingDisabler
+  - hash:
+      serializedVersion: 2
+      Hash: b0eb71c8e4d0f731fd2e6aa791363a97
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: SimpleUnitHealth
+  - hash:
+      serializedVersion: 2
+      Hash: 7db8831e3d2ad58604cbacc5f2cdb645
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: KeyboardMover
+  - hash:
+      serializedVersion: 2
+      Hash: 198b8df160011083d7992bbee436e5ba
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: FloatVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 85710a08520c8a48aa3948db8444e08f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: ImageFillSetter
+  - hash:
+      serializedVersion: 2
+      Hash: f1d5bea5078ca27abff8a7d886e0d7a5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: UnityEventRaiser
+  - hash:
+      serializedVersion: 2
+      Hash: ecddd8f09e0cceec2a32352696804e42
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Elements
+    className: Elemental
+  - hash:
+      serializedVersion: 2
+      Hash: 598da3c82a788e6d552a14187e3a4be3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Sets
+    className: ThingMonitor
+  - hash:
+      serializedVersion: 2
+      Hash: f2afdde9db548d299d246ea5bc014ce6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: SliderSetter
+  - hash:
+      serializedVersion: 2
+      Hash: c01daf133e8ed2dced358217fcbbf8d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Sets
+    className: ThingRuntimeSet
+  - hash:
+      serializedVersion: 2
+      Hash: a6066564b536e91ed4141d27e15be0f9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: DamageDealer
+  - hash:
+      serializedVersion: 2
+      Hash: 5f0a1878b4792ac6d0fe1b5ac4d62202
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: StringVariable
+  - hash:
+      serializedVersion: 2
+      Hash: 6a5a20cb996f14b8efc3f348dfaaa40f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: AudioVolumeSetter
+  - hash:
+      serializedVersion: 2
+      Hash: fd1d1b0db49ca89135702c03ca88d56d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Elements
+    className: AttackElement
+  - hash:
+      serializedVersion: 2
+      Hash: cd85c771bf098b3e960485b9f240e017
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Events
+    className: GameEventListener
+  - hash:
+      serializedVersion: 2
+      Hash: 28ceeb4c88c95229fdba9b8aedbcc7af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Sets
+    className: Thing
+  - hash:
+      serializedVersion: 2
+      Hash: 7356a6ab44d97742756cde84eecfdb26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: UnitHealth
+  - hash:
+      serializedVersion: 2
+      Hash: a6d5530e7a12c17724969bce6f2208ca
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: AudioParameterSetter
+  - hash:
+      serializedVersion: 2
+      Hash: 865a3f2b7d1e4b383457d45b2e5ff918
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: VariableAudioTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: 9bc6b27291af6f32b2c52da351ea83af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: TextReplacer
+  - hash:
+      serializedVersion: 2
+      Hash: d83187cf79140ac41f07ab9c0875e88b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: RoboRyanTron.Unite2017.Variables
+    className: AnimatorParameterSetter
+  - hash:
+      serializedVersion: 2
+      Hash: f4f517a53dba01dcb036f297037c7b56
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TankPlacement
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

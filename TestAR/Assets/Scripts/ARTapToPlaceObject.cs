@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.Experimental.XR;
 using System;
-using TMPro;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
     [SerializeField] GameObject prefabToPlace;
     [SerializeField] GameObject placementIndicator;
-    [SerializeField] TextMeshProUGUI proUGUI;
 
     private ARSessionOrigin arOrigin;
     private ARRaycastManager arRaycastManager;
@@ -51,7 +49,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             placementIndicator.SetActive(true);
         }
 
-        proUGUI.text = "placementPoseIsValid: " + placementPoseIsValid;
     }
 
     private void UpdatePlacementPose()
